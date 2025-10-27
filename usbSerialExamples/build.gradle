@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -11,7 +11,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 35
         vectorDrawables.useSupportLibrary = true
 
@@ -30,4 +30,10 @@ dependencies {
     implementation project(':usbSerialForAndroid')
     implementation 'androidx.appcompat:appcompat:1.6.1' // later versions have minsdk 21
     implementation 'com.google.android.material:material:1.11.0' // later versions have minsdk 19
+}
+
+android {
+    buildFeatures {
+        buildConfig = true
+    }
 }

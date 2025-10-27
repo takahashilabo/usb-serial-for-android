@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
 
     defaultConfig {
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 35
         consumerProguardFiles 'proguard-rules.pro'
         
@@ -32,6 +32,7 @@ android {
 
 dependencies {
     implementation "androidx.annotation:annotation:1.9.1"
+    implementation 'androidx.core:core:1.17.0'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:5.15.2'
     androidTestImplementation 'androidx.appcompat:appcompat:1.6.1' // later versions have minsdk 21
@@ -39,6 +40,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.5.2' // later versions have minsdk 19
     androidTestImplementation 'commons-net:commons-net:3.9.0' // later versions fail on old Android devices with missing java.time.Duration class
     androidTestImplementation 'org.apache.commons:commons-lang3:3.14.0'
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 // gradle task: publishToMavenLocal
@@ -57,4 +59,9 @@ project.afterEvaluate {
     }
 }
 
+android {
+    buildFeatures {
+        buildConfig = true
+    }
+}
 //apply from: 'coverage.gradle'
